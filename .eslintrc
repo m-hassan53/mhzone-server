@@ -1,0 +1,47 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "extends": [
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "sourceType": "module"
+  },
+  "rules": {
+    "comma-dangle": [
+      "error",
+      "never"
+    ],
+    "quotes": [
+      "error",
+      "single",
+      {
+        "avoidEscape": true,
+        "allowTemplateLiterals": true
+      }
+    ],
+    "semi": [
+      "error",
+      "always"
+    ],
+    "eqeqeq": [
+      "error",
+      "smart"
+    ],
+    "sort-keys": [
+      "error",
+      "asc",
+      {
+        "natural": true
+      }
+    ],
+    "sort-vars": "error",
+    "sort-imports": [
+      "error",
+      {
+        "ignoreCase": true
+      }
+    ],
+    "@typescript-eslint/no-explicit-any": "warn"
+  }
+}
