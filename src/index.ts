@@ -27,7 +27,7 @@ auth.authRoutes(passport);
 //   'http://localhost:4200',
 
 const whitelist = [
-  'https://m-hassan53.github.io/mh-zone-deploy/',
+  'https://m-hassan53.github.io',
   'http://localhost:4200'
 ];
 
