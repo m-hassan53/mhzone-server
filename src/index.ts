@@ -3,18 +3,42 @@ import * as email from './routes/email-api';
 import bodyParser from 'body-parser';
 import clientAssets from './routes/serve-assets';
 import clientCore from './routes/serve-client-core';
+import cors from 'cors';
 import dotenv from 'dotenv';
 import express from 'express';
 import {localStrategyConfig} from './controllers/passport';
 import logger from 'morgan';
 import passport from 'passport';
 import Session from 'express-session';
-dotenv.config();
-// dotenv.config({path: 'server/.env'});
+
+console.log('delta-node-env: ', process.env.NODE_ENV);
+if (process.env.NODE_ENV !== 'production') {
+  dotenv.config();
+}
 
 
 localStrategyConfig(passport);
 auth.authRoutes(passport);
+
+// 'https://localhost:4200',
+//   'http://localhost:4200',
+
+const whitelist = [
+  'https://m-hassan53.github.io/mh-zone-deploy/'
+];
+
+const corsOptions = {
+  credentials: true,
+  optionsSuccessStatus: 200,
+  origin: function (origin: any, callback: any) {
+    console.log('REQUEST ORIGIN: ', origin);
+    if (whitelist.indexOf(origin) !== -1 || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  }
+};
 
 // TODO Document/Comment server application
 const app = express();
@@ -26,6 +50,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(Session({resave: false, saveUninitialized: false, secret: 'raiwind-road'}));
+app.use(cors(corsOptions));
 
 // Initialize Passport and restore authentication state, if any, from the
 // session.
