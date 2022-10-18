@@ -13,7 +13,10 @@ import Session from 'express-session';
 
 console.log('delta-node-env: ', process.env.NODE_ENV);
 if (process.env.NODE_ENV !== 'production') {
-  dotenv.config();
+  const importFrom = 'dotenv';
+  import(importFrom).then(dotenv => {
+    dotenv.config();
+  });
 }
 
 
@@ -24,7 +27,8 @@ auth.authRoutes(passport);
 //   'http://localhost:4200',
 
 const whitelist = [
-  'https://m-hassan53.github.io/mh-zone-deploy/'
+  'https://m-hassan53.github.io/mh-zone-deploy/',
+  'http://localhost:4200'
 ];
 
 const corsOptions = {

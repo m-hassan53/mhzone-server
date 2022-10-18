@@ -1,8 +1,9 @@
 import https from 'https';
 
-const secret = '6LeEhJAUAAAAAJ3FRv7mwSQ4CX6XjPMiz78wN5mm';
 
 export function verifyRecaptchaToken(token: string) {
+  const secret = process.env.RECAPTCHA_SITE_KEY;
+
   const options = {
     hostname: 'google.com',
     method: 'POST',

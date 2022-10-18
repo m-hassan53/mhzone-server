@@ -9,7 +9,7 @@ export function sendEmail(data: Message) {
       return {publisher: 'sendGrid-api', status: 'success'};
     })
     .catch((error) => {
-      return {data: error, publisher: 'sendGrid-api', status: 'error'};
+      return {data: error.message, publisher: 'sendGrid-api', status: 'error'};
     });
 }
 
