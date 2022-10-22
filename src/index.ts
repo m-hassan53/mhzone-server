@@ -5,9 +5,9 @@ import clientAssets from './routes/serve-assets';
 import clientCore from './routes/serve-client-core';
 import cors from 'cors';
 import express from 'express';
-import {localStrategyConfig} from './controllers/passport';
+// import {localStrategyConfig} from './controllers/passport';
 import logger from 'morgan';
-import passport from 'passport';
+// import passport from 'passport';
 // import Session from 'express-session';
 
 if (process.env.NODE_ENV !== 'production') {
@@ -18,8 +18,8 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 
-localStrategyConfig(passport);
-auth.authRoutes(passport);
+// localStrategyConfig(passport);
+// auth.authRoutes(passport);
 
 const whitelist = [
   'https://m-hassan53.github.io',
@@ -53,8 +53,8 @@ app.use(cors(corsOptions));
 
 // Initialize Passport and restore authentication state, if any, from the
 // session.
-app.use(passport.initialize());
-app.use(passport.session());
+// app.use(passport.initialize());
+// app.use(passport.session());
 
 // router files can be found under src/routes
 // using configured asset and core routers to serve angular front end application
