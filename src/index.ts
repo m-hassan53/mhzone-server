@@ -4,14 +4,12 @@ import bodyParser from 'body-parser';
 import clientAssets from './routes/serve-assets';
 import clientCore from './routes/serve-client-core';
 import cors from 'cors';
-import dotenv from 'dotenv';
 import express from 'express';
 import {localStrategyConfig} from './controllers/passport';
 import logger from 'morgan';
 import passport from 'passport';
-import Session from 'express-session';
+// import Session from 'express-session';
 
-console.log('delta-node-env: ', process.env.NODE_ENV);
 if (process.env.NODE_ENV !== 'production') {
   const importFrom = 'dotenv';
   import(importFrom).then(dotenv => {
@@ -22,9 +20,6 @@ if (process.env.NODE_ENV !== 'production') {
 
 localStrategyConfig(passport);
 auth.authRoutes(passport);
-
-// 'https://localhost:4200',
-//   'http://localhost:4200',
 
 const whitelist = [
   'https://m-hassan53.github.io',
@@ -53,7 +48,7 @@ const port = process.env.PORT || 3000;
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
-app.use(Session({resave: false, saveUninitialized: false, secret: 'raiwind-road'}));
+// app.use(Session({resave: false, saveUninitialized: false, secret: 'raiwind-road'}));
 app.use(cors(corsOptions));
 
 // Initialize Passport and restore authentication state, if any, from the
