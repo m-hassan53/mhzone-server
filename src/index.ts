@@ -22,7 +22,8 @@ if (process.env.NODE_ENV !== 'production') {
 // auth.authRoutes(passport);
 
 const whitelist = [
-  'https://www.mmhassan.ca'
+  'https://www.mmhassan.ca',
+  'https://mmhassan.ca'
 ];
 
 if (process.env.NODE_ENV !== 'production') {
