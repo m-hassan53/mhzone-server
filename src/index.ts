@@ -22,9 +22,12 @@ if (process.env.NODE_ENV !== 'production') {
 // auth.authRoutes(passport);
 
 const whitelist = [
-  'https://m-hassan53.github.io',
-  'http://localhost:4200'
+  'https://www.mmhassan.ca'
 ];
+
+if (process.env.NODE_ENV !== 'production') {
+  whitelist.push('https://localhost:4200');
+}
 
 const corsOptions = {
   credentials: true,
